@@ -28,6 +28,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import manejador.ManejadorCliente;
 import manejador.ManejadorDenominacion;
+import pojo.Cliente;
+import pojo.DenominacionBillete;
 
 public class VentanaMenus extends JFrame{
     ManejadorCliente mCliente;
@@ -237,6 +239,35 @@ public class VentanaMenus extends JFrame{
                 VentanaAsignacionPermisoTransferencia va = new VentanaAsignacionPermisoTransferencia(mCliente,mDenominacion);
             }
         });
+        
+        btnSaldoCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentanaSaldo va = new VentanaSaldo(mCliente,mDenominacion);
+            }
+        });
+        
+        
+        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cliente[] lsCliente = mCliente.getClienteLogueado().getListaUsuariosPosiblesTransferir();
+                DenominacionBillete[] lsBillete = mDenominacion.getListaDenominacion();
+
+                if(lsCliente[0] != null && lsBillete[0] != null){
+                    VentanaTransferenciaDeno va = new VentanaTransferenciaDeno(mCliente,mDenominacion);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tener usuarios asociados y denominaciones creadas para ingresar a esta pantalla");
+                }
+                
+            }
+        }); 
+       
+         
+        btnTransferenciaLibre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentanaTransferenciaLibre va = new VentanaTransferenciaLibre(mCliente,mDenominacion);
+            }
+        });
+        
         
         
     }

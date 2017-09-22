@@ -123,8 +123,8 @@ public class VentanaLogin extends JFrame{
         contentPane.add(panelBotones, BorderLayout.PAGE_END);
         
 
-        txtPass.setText("dan");
-        txtUsuario.setText("dan");
+        txtPass.setText("ire");
+        txtUsuario.setText("ire");
 
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

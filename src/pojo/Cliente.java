@@ -19,6 +19,8 @@ public class Cliente {
     private Double montoMaximo;
     private String tipoUsuario;
     private Cliente[] listaUsuariosPosiblesTransferir = new Cliente[1];
+    private Operacion[] listaOperacionesRealizadas = new Operacion[1];
+    private Integer contadorOperacionesPosiblesTransferir=1;
     private Integer contadorUsuariosPosiblesTransferir=1;
 
     public Integer getContadorUsuariosPosiblesTransferir() {
@@ -104,6 +106,23 @@ public class Cliente {
     public void setMontoMaximo(Double montoMaximo) {
         this.montoMaximo = montoMaximo;
     }
+
+    public Operacion[] getListaOperacionesRealizadas() {
+        return listaOperacionesRealizadas;
+    }
+
+    public void setListaOperacionesRealizadas(Operacion[] listaOperacionesRealizadas) {
+        this.listaOperacionesRealizadas = listaOperacionesRealizadas;
+    }
+
+    public Integer getContadorOperacionesPosiblesTransferir() {
+        return contadorOperacionesPosiblesTransferir;
+    }
+
+    public void setContadorOperacionesPosiblesTransferir(Integer contadorOperacionesPosiblesTransferir) {
+        this.contadorOperacionesPosiblesTransferir = contadorOperacionesPosiblesTransferir;
+    }
+    
     
     
 }

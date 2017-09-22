@@ -54,4 +54,15 @@ public class ManejadorDenominacion {
         
     }
     
+    public DenominacionBillete obtenerDenominacionXNombre(String nombre){
+        for(int i=0; i<listaDenominacion.length; i++){
+            if(listaDenominacion[i].getNombre().equals(nombre)){
+                return listaDenominacion[i];
+            }
+        }
+        return null;
+    }
+    
+    
+    
 }

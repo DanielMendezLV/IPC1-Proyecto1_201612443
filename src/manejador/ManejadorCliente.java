@@ -6,8 +6,12 @@
 package manejador;
 
 import consts.Const;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.table.AbstractTableModel;
 import pojo.Cliente;
+import pojo.Operacion;
 
 /**
  *
@@ -66,6 +70,7 @@ public class ManejadorCliente{
         cl2.setUsuario("ire");
         cl2.setTipoUsuario(Const.USR);
         cl2.setSaldoInicial(1500.00);
+        cl2.setSaldoActual(1500.00);
         cl2.setCodigoEmpresaAtender(Const.CODBANCOPISTO);
         cl2.setMontoMaximo(2000.00);
         
@@ -74,6 +79,7 @@ public class ManejadorCliente{
         cl3.setUsuario("jm");
         cl3.setTipoUsuario(Const.USR);
         cl3.setSaldoInicial(1200.00);
+        cl3.setSaldoActual(1200.00);
         cl3.setCodigoEmpresaAtender(Const.CODBANCOCASH);
         cl3.setMontoMaximo(20300.00);
         
@@ -82,6 +88,7 @@ public class ManejadorCliente{
         cl4.setUsuario("chapo");
         cl4.setTipoUsuario(Const.USR);
         cl4.setSaldoInicial(1500.00);
+        cl4.setSaldoActual(1500.00);
         cl4.setCodigoEmpresaAtender(Const.CODBANCOPISTO);
         cl4.setMontoMaximo(2000.00);
         
@@ -89,6 +96,7 @@ public class ManejadorCliente{
         cl5.setContrasena("moch");
         cl5.setUsuario("moch");
         cl5.setTipoUsuario(Const.USR);
+        cl5.setSaldoActual(1200.00);
         cl5.setSaldoInicial(1200.00);
         cl5.setCodigoEmpresaAtender(Const.CODBANCOCASH);
         cl5.setMontoMaximo(20300.00);
@@ -176,5 +184,33 @@ public class ManejadorCliente{
         }
        
     }
+    
+    public void agregarOperacionALista(Operacion op, Cliente clienteOpero){
+        
+        Operacion[] listaOP = clienteOpero.getListaOperacionesRealizadas();
+        Integer contadorAgregaciones = clienteOpero.getContadorOperacionesPosiblesTransferir();
+        Operacion[] listaOperacionTransferencia = null;
+        
+        try{
+            if(listaOP==null){
+//                listaConactosPosibleTransferencia = new Cliente[contador];
+//                listaConactosPosibleTransferencia[contador-1] =  cl;
+            }else{
+                listaOperacionTransferencia = new Operacion[contadorAgregaciones];
+                for(int o=0;  o< (listaOperacionTransferencia.length-1) ; o++){
+                    listaOperacionTransferencia[o] = listaOP[o];
+                }
+                listaOperacionTransferencia[contadorAgregaciones-1] =  op;
+            }
+            clienteOpero.setContadorOperacionesPosiblesTransferir(contadorAgregaciones+1);
+            clienteOpero.setListaOperacionesRealizadas(listaOperacionTransferencia);
+        }catch(Exception e){
+            System.out.println("..");
+        }
+       
+    }
+    
+   
+    
     
 }

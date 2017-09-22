@@ -142,6 +142,7 @@ public class VentanaAdministrativa extends JFrame{
                             cl.setContrasena(txtContrasena.getText());
                             cl.setUsuario(txtUsuario.getText());
                             cl.setSaldoInicial(Double.parseDouble(txtSaldoInicial.getText()));
+                            cl.setSaldoActual(Double.parseDouble(txtSaldoInicial.getText()));
                             cl.setCodigoEmpresaAtender(txtEmpresa.getText());
                             cl.setMontoMaximo(Double.parseDouble(txtMonto.getText()));
                             cl.setTipoUsuario(Const.USR);
@@ -170,7 +171,7 @@ public class VentanaAdministrativa extends JFrame{
         //<editor-fold defaultstate="collapsed" desc="Mostrar tabla de usuarios ">
         String[] columns = new String[] {
             "Nombre Usuario", "Contrasena",
-            "Usuario", "Saldo Inicial",
+            "Usuario", "Saldo Inicial", "Saldo Actual",
             "Empresa", "Monto Maximo"
         };
         
@@ -195,7 +196,7 @@ public class VentanaAdministrativa extends JFrame{
         }
         
         
-        Object[][] infoClientes = new Object[listaNoAdmin.length][6];
+        Object[][] infoClientes = new Object[listaNoAdmin.length][7];
         for(int fil = 0; fil < listaNoAdmin.length ; fil++){
 //                for(int col=0; col < lsCliente.length)
             if(listaNoAdmin[fil]!=null){
@@ -203,8 +204,9 @@ public class VentanaAdministrativa extends JFrame{
                 infoClientes[fil][1] = listaNoAdmin[fil].getContrasena()!=null?listaNoAdmin[fil].getContrasena():"";
                 infoClientes[fil][2] = listaNoAdmin[fil].getUsuario()!=null?listaNoAdmin[fil].getUsuario():"";
                 infoClientes[fil][3] = listaNoAdmin[fil].getSaldoInicial()!=null?listaNoAdmin[fil].getSaldoInicial():"";
-                infoClientes[fil][4] = listaNoAdmin[fil].getCodigoEmpresaAtender()!=null?listaNoAdmin[fil].getCodigoEmpresaAtender():"";
-                infoClientes[fil][5] = listaNoAdmin[fil].getMontoMaximo()!=null?listaNoAdmin[fil].getMontoMaximo():"";
+                infoClientes[fil][4] = listaNoAdmin[fil].getSaldoActual()!=null?listaNoAdmin[fil].getSaldoActual():"";
+                infoClientes[fil][5] = listaNoAdmin[fil].getCodigoEmpresaAtender()!=null?listaNoAdmin[fil].getCodigoEmpresaAtender():"";
+                infoClientes[fil][6] = listaNoAdmin[fil].getMontoMaximo()!=null?listaNoAdmin[fil].getMontoMaximo():"";
             }
 
         }
