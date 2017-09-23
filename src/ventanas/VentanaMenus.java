@@ -321,6 +321,12 @@ public class VentanaMenus extends JFrame{
             }
         });
         
+        btnRetiroEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentanaRetiroEfectivo va = new VentanaRetiroEfectivo(mCliente,mDenominacion);
+            }
+        });
+        
     }
 }
 

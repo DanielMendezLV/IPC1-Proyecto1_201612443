@@ -76,4 +76,45 @@ public class Const {
         return "cm-"+ dtFecha+".html";
     }
      
+    public static String crearPantallaRetiroEfectivo(String[] listaOperaciones){
+        String nombre="";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println();
+        String dtFecha = dateFormat.format(date).replace(" ", "");
+        dtFecha = dtFecha.replace("/", "");
+        dtFecha = dtFecha.replace(":", "");
+        
+        try{
+           
+            
+            nombre = "C://Users//danie//Desktop//IPC1-Proyecto1_201612443//comprobante//re-"+ dtFecha+".html";
+            File file = new File(nombre);
+  
+            //Create the file
+            if (file.createNewFile()){
+                 //Write Content
+                FileWriter writer = new FileWriter(file);
+                writer.write("<body bgcolor=\"#A7DBD8\">");
+                
+                writer.write("<h1 style=\"font-family:verdana;\"> Retiro Efectivo </h1>");
+                for(int s=0; s<listaOperaciones.length; s++){
+                    writer.write("<h2 style=\"font-family:verdana;\">" + listaOperaciones[s]+  "</h2>");
+                }
+                
+                writer.write("</body>");
+                writer.close();
+                
+            }else{
+                System.out.println("File already exists.");
+            }
+            
+           
+        } catch (IOException e) {
+            System.out.println("Fallo");
+           // do something
+        }
+        return "re-"+ dtFecha+".html";
+    }
+    
 }
