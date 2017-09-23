@@ -308,7 +308,7 @@ public class VentanaMenus extends JFrame{
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Operacion[] lsOperacion = mCliente.getClienteLogueado().getListaOperacionesRealizadas();
                 if(lsOperacion[0] != null){
-                    VentanaGraficaPie va = new VentanaGraficaPie(mCliente,mDenominacion);
+                    VentanaGraficaBarras va = new VentanaGraficaBarras(mCliente,mDenominacion);
                 }else{
                     JOptionPane.showMessageDialog(null, "Debe tener transacciones para utilizar esta pantalla");
                 }
