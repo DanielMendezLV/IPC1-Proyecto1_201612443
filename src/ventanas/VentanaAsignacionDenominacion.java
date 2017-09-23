@@ -117,10 +117,10 @@ public class VentanaAsignacionDenominacion extends JFrame{
         
         pnlV.add(lblNombre);
         pnlV.add(txtNombre);
-        pnlV.add(lblCantidad);
-        pnlV.add(txtCantidad);
         pnlV.add(lblValor);
         pnlV.add(txtValor);
+        pnlV.add(lblCantidad);
+        pnlV.add(txtCantidad);
         pnlV.add(btnAgregar);
         
         panelMedio.add(pnlV);

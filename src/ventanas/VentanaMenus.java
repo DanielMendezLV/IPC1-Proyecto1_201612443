@@ -127,7 +127,10 @@ public class VentanaMenus extends JFrame{
         btnAsignarDenominaciones.setText("Asignar Denominaciones");
         
         
-        
+        JButton btnVerExistencia = new JButton();
+        ImageIcon iconoADs = new ImageIcon("src/imagenes/ad.png");
+        btnVerExistencia.setIcon(iconoADs);
+        btnVerExistencia.setText("Existencia Billetes");
 
         
         if(mCliente.getClienteLogueado().getTipoUsuario().equals(Const.USR)){
@@ -173,19 +176,20 @@ public class VentanaMenus extends JFrame{
         pnlCuadricula3x3.setLayout(layout3x3);
         
         if(mCliente.getClienteLogueado().getTipoUsuario().equals(Const.USR)){
-        pnlCuadricula3x3.add(btnSaldoCuenta);
-        pnlCuadricula3x3.add(btnTransferencia);
-        pnlCuadricula3x3.add(btnTransferenciaLibre);
-        pnlCuadricula3x3.add(btnSistemaReImpresion);
-        pnlCuadricula3x3.add(btnGraficasPie);
-        pnlCuadricula3x3.add(btnGraficasBarras);
-        pnlCuadricula3x3.add(btnRetiroEfectivo);
+            pnlCuadricula3x3.add(btnSaldoCuenta);
+            pnlCuadricula3x3.add(btnTransferencia);
+            pnlCuadricula3x3.add(btnTransferenciaLibre);
+            pnlCuadricula3x3.add(btnSistemaReImpresion);
+            pnlCuadricula3x3.add(btnGraficasPie);
+            pnlCuadricula3x3.add(btnGraficasBarras);
+            pnlCuadricula3x3.add(btnRetiroEfectivo);
         }
         
         if(mCliente.getClienteLogueado().getTipoUsuario().equalsIgnoreCase(Const.ADM)){
             pnlCuadricula3x3.add(btnModuloAdmon);
             pnlCuadricula3x3.add(btnAsignarListaAlumnos);
             pnlCuadricula3x3.add(btnAsignarDenominaciones);
+            pnlCuadricula3x3.add(btnVerExistencia);
         }
         
         pnlCuadricula3x3.add(btnLogO);
@@ -286,6 +290,34 @@ public class VentanaMenus extends JFrame{
                 }else{
                     JOptionPane.showMessageDialog(null, "Debe tener transacciones para utilizar esta pantalla");
                 }
+            }
+        });
+        
+        btnGraficasPie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Operacion[] lsOperacion = mCliente.getClienteLogueado().getListaOperacionesRealizadas();
+                if(lsOperacion[0] != null){
+                    VentanaGraficaPie va = new VentanaGraficaPie(mCliente,mDenominacion);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tener transacciones para utilizar esta pantalla");
+                }
+            }
+        });
+        
+        btnGraficasBarras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Operacion[] lsOperacion = mCliente.getClienteLogueado().getListaOperacionesRealizadas();
+                if(lsOperacion[0] != null){
+                    VentanaGraficaPie va = new VentanaGraficaPie(mCliente,mDenominacion);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tener transacciones para utilizar esta pantalla");
+                }
+            }
+        });
+        
+        btnVerExistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentanaExistenciaBilletes va = new VentanaExistenciaBilletes(mCliente,mDenominacion);
             }
         });
         

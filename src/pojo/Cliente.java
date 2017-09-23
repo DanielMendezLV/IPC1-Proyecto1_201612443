@@ -18,11 +18,22 @@ public class Cliente {
     private String codigoEmpresaAtender;
     private Double montoMaximo;
     private String tipoUsuario;
+    private Double cuantoGastadoEnMi=0.00;
     private Cliente[] listaUsuariosPosiblesTransferir = new Cliente[1];
     private Operacion[] listaOperacionesRealizadas = new Operacion[1];
     private Integer contadorOperacionesPosiblesTransferir=1;
     private Integer contadorUsuariosPosiblesTransferir=1;
 
+    public Double getCuantoGastadoEnMi() {
+        return cuantoGastadoEnMi;
+    }
+
+    public void setCuantoGastadoEnMi(Double cuantoGastadoEnMi) {
+        this.cuantoGastadoEnMi = cuantoGastadoEnMi;
+    }
+
+    
+    
     public Integer getContadorUsuariosPosiblesTransferir() {
         return contadorUsuariosPosiblesTransferir;
     }
