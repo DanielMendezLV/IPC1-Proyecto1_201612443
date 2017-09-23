@@ -98,7 +98,7 @@ public class VentanaTransferenciaDeno extends JFrame implements ActionListener, 
     public void configurarPantalla(){
         this.agregarComponentes(this.getContentPane());
         //Configuraciones
-        setSize(800,200);
+        setSize(820,200);
         
         setVisible(true);
         setResizable(false);
@@ -121,8 +121,8 @@ public class VentanaTransferenciaDeno extends JFrame implements ActionListener, 
         JLabel  lblSaldo= new JLabel("Saldo actual : " + mCliente.getClienteLogueado().getSaldoActual(), JLabel.CENTER);
         JLabel  lblF= new JLabel("Fecha : ", JLabel.CENTER);
         
-        TextField   lblFechaYHora= new TextField (dateFormat.format(date), JLabel.CENTER);
-        lblFechaYHora.setColumns(5);
+        TextField   lblFechaYHora= new TextField (10);
+        lblFechaYHora.setText(dateFormat.format(date));
         JLabel  lblEmpresa= new JLabel("Empresa: " + mCliente.getClienteLogueado().getCodigoEmpresaAtender() , JLabel.CENTER);
         
         JPanel pnlV = new JPanel();
@@ -135,8 +135,6 @@ public class VentanaTransferenciaDeno extends JFrame implements ActionListener, 
         pnlV.add(lblNombre);
         pnlV.add(lblSaldo);
         pnlV.add(lblEmpresa);
-        pnlV.add(lblF);
-        pnlV.add(lblFechaYHora);
         
         
         panelMedio.add(pnlV);
@@ -180,7 +178,7 @@ public class VentanaTransferenciaDeno extends JFrame implements ActionListener, 
         panelHorizontal.add(lblDenominacion);
         panelHorizontal.add(cmbDenominacion);
         
-        Border emptyBorderBt = BorderFactory.createEmptyBorder(30, 0, 0, 0);
+        Border emptyBorderBt = BorderFactory.createEmptyBorder(10, 0, 0, 0);
         JButton btnAgregar = new JButton();     
         btnAgregar.setText("Transferir");
         
@@ -190,6 +188,8 @@ public class VentanaTransferenciaDeno extends JFrame implements ActionListener, 
 //        BoxLayout boxLayoutBtn = new BoxLayout(panelHorizontalBtn, BoxLayout.Y_AXIS);
 //        panelHorizontalBtn.setLayout(boxLayoutBtn);
         panelHorizontalBtn.add(btnAgregar);
+        panelHorizontalBtn.add(lblF);
+        panelHorizontalBtn.add(lblFechaYHora);
         
 //        btnAgregar.setBorder(emptyBorderBt);
         //btnAgregar.setMargin(new Insets(40, 0, 0, 0));
@@ -228,19 +228,20 @@ public class VentanaTransferenciaDeno extends JFrame implements ActionListener, 
                             if(dialogResult == JOptionPane.YES_OPTION){
                                 path = Const.crearVoucher(op);
                                 JOptionPane.showMessageDialog(null, "Voucher generado exitosamente");
+                                
+                                try {
+                                    String url = "C:\\Users\\danie\\Desktop\\IPC1-Proyecto1_201612443\\comprobante\\"+path;
+                                    String otraURL = "C:\\Program Files\\Internet Explorer\\iexplore.exe \""+url+"\"";
+                                    Process p = Runtime.getRuntime().exec(otraURL);
+
+                                } catch (IOException ex) {
+                                    Logger.getLogger(VentanaTransferenciaDeno.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                 
                             }   
                            
                     
-                            try {
-                                String url = "C:\\Users\\danie\\Desktop\\IPC1-Proyecto1_201612443\\comprobante\\"+path;
-                                String otraURL = "C:\\Program Files\\Internet Explorer\\iexplore.exe \""+url+"\"";
-                                Process p = Runtime.getRuntime().exec(otraURL);
-
-//                                Runtime.getRuntime().exec("explorer.exe /select," + path);
-//                                Runtime.getRuntime().exec("iexplore.exe www.stackoverflow.com");
-                            } catch (IOException ex) {
-                                Logger.getLogger(VentanaTransferenciaDeno.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                           
                             
                         }else{
                             JOptionPane.showMessageDialog(null, "Saldo maximo alcanzado a persona si realiza esta operacion");

@@ -264,7 +264,16 @@ public class VentanaMenus extends JFrame{
          
         btnTransferenciaLibre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VentanaTransferenciaLibre va = new VentanaTransferenciaLibre(mCliente,mDenominacion);
+                Cliente[] lsCliente = mCliente.getClienteLogueado().getListaUsuariosPosiblesTransferir();
+                DenominacionBillete[] lsBillete = mDenominacion.getListaDenominacion();
+
+                if(lsCliente[0] != null && lsBillete[0] != null){
+                    VentanaTransferenciaLibre va = new VentanaTransferenciaLibre(mCliente,mDenominacion);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tener usuarios asociados y denominaciones creadas para ingresar a esta pantalla");
+                }
+                
+                
             }
         });
         
