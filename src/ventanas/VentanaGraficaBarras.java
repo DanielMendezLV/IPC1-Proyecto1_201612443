@@ -22,6 +22,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import pojo.Operacion;
 
 /**
  *
@@ -59,32 +60,41 @@ public class VentanaGraficaBarras extends JFrame{
     public  void agregarComponentes(Container contentPane) {
         contentPane.setLayout(new BorderLayout(5,5));
         String[] arg1 = {"Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio", "Agosto", "Septiembre", "Octubre" , "Noviembre" , "Diciembre"};
+        Double[] fltArreglo = new Double[12];
+        
+        Operacion[] listaOperacion = mCliente.getClienteLogueado().getListaOperacionesRealizadas();
+        
+        for(Integer s = 0; s < fltArreglo.length ; s++){
+            fltArreglo[s]=0.00;
+        }
+         
+        for(Integer op = 0; op < listaOperacion.length ; op++){
+            String obtuviendoMes = listaOperacion[op].getFechaRealizo().split(" ")[0].split("/")[1];
+            fltArreglo[Integer.parseInt(obtuviendoMes)-1]  = fltArreglo[Integer.parseInt(obtuviendoMes)-1] + listaOperacion[op].getCantidadTransferida();
+        }
         
         
         JFreeChart barra = null;
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        String taxi1 = "Taxi 1";
-        String taxi2 = "Taxi 2";
-
+        
+        
         String dia1 = "-";
-        String dia2 = "Día 2";
-        String dia3 = "Día 3";
-        String dia4 = "Día 4";
+        
 
-        dataset.addValue(18, arg1[0],dia1);
-        dataset.addValue(15, arg1[1],dia1);
-        dataset.addValue(16, arg1[2],dia1);
-        dataset.addValue(12, arg1[3],dia1);
-        dataset.addValue(12, arg1[4],dia1);
-        dataset.addValue(12, arg1[5],dia1);
-        dataset.addValue(12, arg1[6],dia1);
-        dataset.addValue(12, arg1[7],dia1);
-        dataset.addValue(12, arg1[8],dia1);
-        dataset.addValue(12, arg1[9],dia1);
-        dataset.addValue(12, arg1[10],dia1);
-        dataset.addValue(12, arg1[11],dia1);
+        dataset.addValue(fltArreglo[0], arg1[0],dia1);
+        dataset.addValue(fltArreglo[1], arg1[1],dia1);
+        dataset.addValue(fltArreglo[2], arg1[2],dia1);
+        dataset.addValue(fltArreglo[3], arg1[3],dia1);
+        dataset.addValue(fltArreglo[4], arg1[4],dia1);
+        dataset.addValue(fltArreglo[5], arg1[5],dia1);
+        dataset.addValue(fltArreglo[6], arg1[6],dia1);
+        dataset.addValue(fltArreglo[7], arg1[7],dia1);
+        dataset.addValue(fltArreglo[8], arg1[8],dia1);
+        dataset.addValue(fltArreglo[9], arg1[9],dia1);
+        dataset.addValue(fltArreglo[10], arg1[10],dia1);
+        dataset.addValue(fltArreglo[11], arg1[11],dia1);
         
         
 
