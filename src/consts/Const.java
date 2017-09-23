@@ -38,9 +38,7 @@ public class Const {
     
      public static String crearVoucher(Operacion op){
         String nombre="";
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        String dtFecha = dateFormat.format(date).replace(" ", "");
+        String dtFecha = op.getFechaRealizo().replace(" ", "");
         dtFecha = dtFecha.replace("/", "");
         dtFecha = dtFecha.replace(":", "");
         
@@ -58,7 +56,7 @@ public class Const {
                 
                 writer.write("<h1 style=\"font-family:verdana;\"> Voucher de pago </h1>");
                 writer.write("<h2 style=\"font-family:verdana;\"> Banco:  " + op.getCodBanco() +  "</h2>");
-                writer.write("<h2 style=\"font-family:verdana;\"> Fecha:  " + dateFormat.format(date)+  "</h2>" );
+                writer.write("<h2 style=\"font-family:verdana;\"> Fecha:  " + op.getFechaRealizo()+  "</h2>" );
                 writer.write("<h3 style=\"font-family:verdana;\"> Saldo Actual: "+ op.getSaldoActual() +  "</h3>");
                 writer.write("<h3 style=\"font-family:verdana;\"> Cantidad: "+ op.getCantidadTransferida()+  "</h3>");
                 writer.write("<h3 style=\"font-family:verdana;\"> Cuenta de: "+ op.getUsuarioRealizo().getNombre()+  "</h3>");

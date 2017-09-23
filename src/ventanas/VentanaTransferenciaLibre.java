@@ -113,7 +113,7 @@ public class VentanaTransferenciaLibre extends JFrame implements ActionListener,
     
     public  void agregarComponentes(Container contentPane) {
         contentPane.setLayout(new BorderLayout(5,5));
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         System.out.println();
        
@@ -264,10 +264,6 @@ public class VentanaTransferenciaLibre extends JFrame implements ActionListener,
                                     }
                                     
                                 }   
-
-
-                                
-
                             }else{
                                 JOptionPane.showMessageDialog(null, "Saldo maximo alcanzado a persona si realiza esta operacion");
                             }

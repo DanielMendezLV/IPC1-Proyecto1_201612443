@@ -30,6 +30,7 @@ import manejador.ManejadorCliente;
 import manejador.ManejadorDenominacion;
 import pojo.Cliente;
 import pojo.DenominacionBillete;
+import pojo.Operacion;
 
 public class VentanaMenus extends JFrame{
     ManejadorCliente mCliente;
@@ -277,7 +278,16 @@ public class VentanaMenus extends JFrame{
             }
         });
         
-        
+        btnSistemaReImpresion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Operacion[] lsOperacion = mCliente.getClienteLogueado().getListaOperacionesRealizadas();
+                if(lsOperacion[0] != null){
+                    VentanaReimpresion va = new VentanaReimpresion(mCliente,mDenominacion);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tener transacciones para utilizar esta pantalla");
+                }
+            }
+        });
         
     }
 }
